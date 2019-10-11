@@ -13,13 +13,18 @@ const ResourceList = ({ resource }) => {
   };
 
   // Triggers everytime our component is updated or mounted
+  // Arrow function is called only when our resource is different from previous
   useEffect(() => {
     fetchResource(resource);
   }, [resource]);
   return (
-    <div>
-      {resources.length}
-    </div>
+    <ul>
+      {
+        resources.map(record => (
+          <li key={record.id}>{record.title}</li>
+        ))
+      }
+    </ul>
   )
 }
 
